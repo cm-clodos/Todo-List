@@ -15,7 +15,7 @@ addToDoButton.addEventListener("click", addingToDo);
 
 //functions
 function addingToDo(){
-    //erstellt ein To Do Item
+    //erstellt ein To Do Item als P tag mit der CSS Klasse
     let item = document.createElement("p");
     item.classList.add("itemStyle");
 
@@ -24,12 +24,15 @@ function addingToDo(){
     check.setAttribute("type", "checkbox");
     check.setAttribute("id", "checkBoxId");
 
+    // deletebutton element erstellen + ID
+
     //wenn Inputfield nicht leer ist wird eine Todo hinzugefügt
     if (inputField.value !== ""){
     item.innerText = inputField.value;
     // toDo Container ist parent of item and item is parent uf check
     toDoContainer.appendChild(item);
     item.appendChild(check);
+    //delete button Child of item
     inputField.value = "";
     } else alert("Füge eine Aufgabe ein");
 
@@ -39,7 +42,7 @@ function addingToDo(){
         item.style.textDecoration = "line-through";
         } else item.style.textDecoration = "none";
     })
-
+    //dieser eventlistener auf click für delete button
     item.addEventListener("dblclick", function(){
         //remove item = Item + Check sind weg 
         toDoContainer.removeChild(item);
